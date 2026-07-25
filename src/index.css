@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: font1;
+    src: url(/fonts/Lausanne-300.woff2);
+}
+@font-face {
+    font-family: font2;
+    src: url(/fonts/Lausanne-500.woff2);
+}
+
+::selection{
+    background-color:#c6ff1a;
+    color:#000000;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
