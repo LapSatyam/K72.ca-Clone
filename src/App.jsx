@@ -8,8 +8,10 @@ import Logo from "./components/home/Logo";
 const App = () => {
   return (
     <>
-      <div className="fixed top-3.5 left-4.5 scale-115 z-100">
-        <Logo />
+      <div className="fixed top-3.5 left-4.5 scale-112 z-100">
+        <Link to="/">
+          <Logo />
+        </Link>
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
