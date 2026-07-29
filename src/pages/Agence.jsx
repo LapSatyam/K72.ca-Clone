@@ -1,54 +1,54 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const imageArray = [
+  "/assets/img1.jpg",
+  "/assets/img2.jpg",
+  "/assets/img3.jpg",
+  "/assets/img4.jpg",
+  "/assets/img5.jpg",
+  "/assets/img6.jpg",
+  "/assets/img7.jpg",
+  "/assets/img8.jpg",
+];
 
 const Agence = () => {
   const imageDivRef = useRef(null);
-  const imageRef = useRef(null);
-
-  const imageArray = [
-    "/assets/img1.jpg",
-    "/assets/img2.jpg",
-    "/assets/img3.jpg",
-    "/assets/img4.jpg",
-    "/assets/img5.jpg",
-    "/assets/img6.jpg",
-    "/assets/img7.jpg",
-    "/assets/img8.jpg",
-  ];
-
-  gsap.registerPlugin(ScrollTrigger);
+  const [img, setImg] = useState(imageArray[0]);
+  const indexRef = useRef(0);
 
   useGSAP(() => {
-    gsap.to(imageDivRef.current, {
-      scrollTrigger: {
-        trigger: imageDivRef.current,
-        start: "top 20%",
-        end: "top -165%",
-        scrub: 4,
-        pin: true,
-        onUpdate: (e) => {
-          const imageIndex = Math.floor(e.progress * (imageArray.length - 1));
+    ScrollTrigger.create({
+      trigger: imageDivRef.current,
+      start: "top 10%",
+      end: "top -180%",
+      pin: true,
+      scrub: 2,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
 
-          imageRef.current.src = imageArray[imageIndex];
-        },
+      onUpdate: ({ progress }) => {
+        const index = Math.min(7, Math.floor(progress * 8));
+
+        if (indexRef.current !== imageArray[index]) {
+          indexRef.current = index;
+          setImg(imageArray[index]);
+        }
       },
     });
-  });
+  }, []);
 
   return (
-    <div>
+    <div className="bg-white py-1">
       <div className="section1">
-        <div
-          ref={imageDivRef}
-          className="h-67 w-52 absolute top-46 left-102 rounded-[1.2rem] overflow-hidden"
-        >
-          <img
-            ref={imageRef}
-            className="h-full w-full object-cover"
-            src="/assets/img1.jpg"
-          />
+        <div ref={imageDivRef} className="h-67 w-52 absolute top-46 left-102 ">
+          <div className="h-full w-full rounded-[1.2rem] overflow-hidden">
+            <img className="h-full w-full object-cover" src={img} />
+          </div>
         </div>
         <div className="relative font-[font2] h-full w-full">
           <div className="mt-[23.8rem]">
@@ -96,7 +96,7 @@ const Agence = () => {
           </div>
         </div>
       </div>
-      <div className="section2 h-screen"></div>
+      <div className="section2 h-[50vh]"></div>
     </div>
   );
 };

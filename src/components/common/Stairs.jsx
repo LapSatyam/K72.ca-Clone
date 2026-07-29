@@ -1,48 +1,59 @@
-import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-const Stairs = ({ children }) => {
-  const currentPath = useLocation().pathname;
+const Stairs = (props) => {
+  const { pathname } = useLocation();
+
+  const stagger =
+    pathname === "/"
+      ? -0.28
+      : pathname === "/projects"
+        ? 0.28
+        : pathname === "/agence"
+          ? -0.28
+          : -0.28;
+
   const stairParentRef = useRef(null);
   const pageRef = useRef(null);
 
-  useGSAP(() => {
-    const tl = gsap.timeline();
+  useGSAP(
+    () => {
+      const stairs = gsap.utils.toArray(".stair");
 
-    tl.to(stairParentRef.current, {
-      display: "block",
-      delay: -0.5,
-    });
-    tl.from(".stair", {
-      height: 0,
-      stagger: {
-        amount: -0.2,
-      },
-    });
-    tl.to(".stair", {
-      y: "100%",
-      stagger: {
-        amount: -0.25,
-      },
-    });
-    tl.to(stairParentRef.current, {
-      display: "none",
-    });
-    tl.to(".stair", {
-      y: "0%",
-    });
+      const tl = gsap.timeline();
 
-    gsap.from(pageRef.current, {
-      opacity: 0,
-      delay: 1.05,
-      scale: 1.2,
-    });
-  }, [currentPath]);
+      tl.set(stairParentRef.current, {
+        display: "block",
+      })
+        .set(stairs, {
+          yPercent: 0,
+        })
+        .to(stairs, {
+          yPercent: 100,
+          delay: 0.4,
+          stagger: {
+            amount: stagger,
+          },
+        })
+        .set(stairParentRef.current, {
+          display: "none",
+        })
+        .set(stairs, {
+          yPercent: 0,
+        });
+
+      return () => tl.kill();
+    },
+    {
+      scope: stairParentRef,
+      dependencies: [pathname],
+    },
+  );
 
   return (
-    <>
+    <div>
       <div ref={stairParentRef} className="h-screen w-full fixed z-20 top-0">
         <div className="h-full w-full flex">
           <div className="stair h-full w-1/5 bg-black"></div>
@@ -52,8 +63,8 @@ const Stairs = ({ children }) => {
           <div className="stair h-full w-1/5 bg-black"></div>
         </div>
       </div>
-      <div ref={pageRef}>{children}</div>
-    </>
+      <div ref={pageRef}>{props.children}</div>
+    </div>
   );
 };
 
