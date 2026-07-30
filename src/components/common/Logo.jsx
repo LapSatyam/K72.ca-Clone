@@ -28,7 +28,7 @@ const Logo = () => {
     <div ref={logo} className="fixed top-3.5 left-4.5 scale-112 z-100">
       <Link to="/">
         <svg
-          className="trensition duration-50"
+          className="transition duration-50"
           xmlns="http://www.w3.org/2000/svg"
           width="103"
           height="44"
