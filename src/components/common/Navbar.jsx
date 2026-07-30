@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import Logo from "./Logo";
 import gsap from "gsap";
+import FullScreenNav from "./FullScreenNav";
 
 const Navbar = () => {
   const navRef = useRef(null);
@@ -31,6 +32,7 @@ const Navbar = () => {
           <div className="w-6 border-t-[1.9999px] ml-auto border-t-white group-hover:border-black"></div>
         </div>
       </div>
+      <FullScreenNav />
     </div>
   );
 };
