@@ -9,7 +9,6 @@ import Navbar from "./components/common/Navbar.jsx";
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Logo />
-    <Navbar />
     <Stairs>
       <App />
     </Stairs>
