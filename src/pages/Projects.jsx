@@ -67,13 +67,15 @@ const Projects = () => {
   );
   return (
     <div className="font-[font2] min-h-screen w-full bg-white">
-      <h1 className="relative inline-block pl-1.5 mt-[20%] text-[12.5rem]">
+      <h1 className="relative inline-block pl-1.5 mt-[120%] lg:mt-[20%] -mb-21 text-[5rem] lg:text-[12.5rem]">
         PROJETS
-        <sup className="absolute top-20 -right-8 text-[2.5rem]">18</sup>
+        <sup className="absolute top-7 lg:top-20 -right-5 lg:-right-8 text-[1.4rem] lg:text-[2.5rem]">
+          18
+        </sup>
       </h1>
       <div
         ref={cardsContainarRef}
-        className="flex flex-col gap-2.5 -mt-21 px-2.5 h-fit w-full text-white text-5xl"
+        className="flex flex-col gap-2.5 lg:px-2.5 min-h-screen w-full text-white text-5xl"
       >
         {images.map((img, idx) => {
           return <ProjectsCard key={idx} img1={img.img1} img2={img.img2} />;

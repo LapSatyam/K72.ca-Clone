@@ -32,7 +32,7 @@ const FullScreenNav = ({ navRef, closeMenu }) => {
     >
       <button
         onClick={closeMenu}
-        className="absolute right-2.5 top-2.5 hover:text-[#c6ff1a] cursor-pointer"
+        className="absolute scale-90 lg:scale-100 right-1 lg:right-2.5 top-1 lg:top-2.5 hover:text-[#c6ff1a] active:text-white cursor-pointer transition-all"
       >
         <svg
           width="110"
@@ -48,11 +48,11 @@ const FullScreenNav = ({ navRef, closeMenu }) => {
         </svg>
       </button>
 
-      <div className="h-full w-full flex flex-col justify-center text-[7rem] leading-none uppercase text-center">
+      <div className="h-full w-full flex flex-col justify-center text-6xl lg:text-[7rem] leading-none uppercase text-center transition-all">
         {/* First */}
         <Link onClick={closeMenu} to="/projects">
           <div
-            className="border-b relative border-white/50 border-t min-w-full h-25.5 pt-0.5 overflow-hidden"
+            className="border-b relative border-white/50 border-t min-w-full h-fit lg:h-25.5 pt-0.5 overflow-hidden"
             onMouseEnter={() => mouseEnter("#one")}
             onMouseLeave={() => mouseLeave("#one")}
           >
@@ -124,7 +124,7 @@ const FullScreenNav = ({ navRef, closeMenu }) => {
         {/* Second */}
         <Link onClick={closeMenu} to="/agence">
           <div
-            className="border-b relative border-white/50 min-w-full h-25.5 pt-0.5 overflow-hidden"
+            className="border-b relative border-white/50 min-w-full h-fit lg:h-25.5 pt-0.5 overflow-hidden"
             onMouseEnter={() => mouseEnter("#two")}
             onMouseLeave={() => mouseLeave("#two")}
           >
@@ -196,7 +196,7 @@ const FullScreenNav = ({ navRef, closeMenu }) => {
         {/* Third */}
         <Link onClick={closeMenu} to="/contact">
           <div
-            className="border-b relative border-white/50 w-full h-25.5 pt-0.5 overflow-hidden"
+            className="border-b relative border-white/50 w-full h-fit lg:h-25.5 pt-0.5 overflow-hidden"
             onMouseEnter={() => mouseEnter("#three")}
             onMouseLeave={() => mouseLeave("#three")}
           >
@@ -432,7 +432,7 @@ const FullScreenNav = ({ navRef, closeMenu }) => {
         {/* Fourth */}
         <Link onClick={closeMenu} to="/blogue">
           <div
-            className="border-b relative border-white/50 w-full h-25.5 pt-0.5 overflow-hidden"
+            className="border-b relative border-white/50 w-full h-fit lg:h-25.5 pt-0.5 overflow-hidden"
             onMouseEnter={() => mouseEnter("#four")}
             onMouseLeave={() => mouseLeave("#four")}
           >

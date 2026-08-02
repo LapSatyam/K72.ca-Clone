@@ -7,7 +7,7 @@ import Navbar from "./components/common/Navbar";
 const App = () => {
   return (
     <>
-     <Navbar />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/agence" element={<Agence />} />
