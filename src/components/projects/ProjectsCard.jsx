@@ -1,6 +1,6 @@
 const ProjectsCard = ({ img1, img2 }) => {
   return (
-    <div className="card flex gap-2.5 overflow-hidden">
+    <div className="card flex gap-2.5 overflow-hidden cursor-pointer">
       <div className="h-105 w-[50vw] relative rounded-none transition-all hover:rounded-[45px] group">
         <img
           className="w-full h-full object-cover transition-all group-hover:rounded-[45px]"

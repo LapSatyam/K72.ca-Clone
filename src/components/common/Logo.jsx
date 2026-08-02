@@ -18,20 +18,20 @@ const Logo = () => {
   useEffect(() => {
     gsap.from(logo.current, {
       opacity: 0,
-      duration: 1.2,
+      duration: 1,
       ease: "expo.inOut",
       delay: 0.6,
     });
   }, []);
 
   return (
-    <div ref={logo} className="fixed top-3.5 left-4.5 scale-112 z-100">
+    <div ref={logo} className="fixed top-2 left-2 lg:top-3.5 lg:left-4.5 z-100">
       <Link to="/">
         <svg
           id="logo"
           className="transition duration-50"
           xmlns="http://www.w3.org/2000/svg"
-          width="103"
+          width="104"
           height="44"
           viewBox="0 0 103 44"
           fill={fill}

@@ -8,6 +8,7 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const navRef = useRef(null);
   const fullNavRef = useRef(null);
+
   const fill =
     pathname === "/"
       ? "#fff"
@@ -67,7 +68,7 @@ const Navbar = () => {
             duration: 0.15,
           });
         }}
-        className="h-12.5 w-53 bg-black relative group cursor-pointer"
+        className="h-11 w-54 bg-black relative group cursor-pointer"
       >
         <div ref={navRef} className="absolute w-full bg-[#c6ff1a] z-5"></div>
         <div className="absolute top-[45%] left-[55%] pl-4 flex flex-col items-center justify-end gap-1 z-10 transition-all duration-200 delay-900">
